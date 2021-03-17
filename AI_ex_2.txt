@@ -1,0 +1,54 @@
+# Общо услови на задачата:
+# На шахматна дъска (8*8) трябва да се поставят (8) царици без да се застрашават помежду си.
+
+
+#Решение чрез генериране и тестване на пермутации.
+
+from itertools import permutations
+
+def solution_1(n):
+  cols = range(n)
+  for vec in permutations(cols):
+      pass
+
+solution_1(8)
+
+#------------------------------------------------------------------------
+
+# Решение: чрез backtracking
+
+def not_attack(q, list):
+    pass
+
+def solution_2(list, n):
+  if n == 9:
+    #print
+    pass
+  else:
+      for i in range(8):
+          pass
+
+#solution_2([], 1)
+
+#------------------------------------------------------------------------
+# Решение чрез разпространение на ограниченията
+
+def removePos(x,y, Dx, Dy, Du, Dv, sol):
+  pass
+
+def findSolution(Dx, Dy, Du, Dv, sol):
+  if len(Dx)==0 and len(Dy)==0 :
+    #print
+    pass
+  elif len(Dx)>0:
+      x = Dx[0]
+      for y in Dy:
+          # removePos
+          pass
+
+
+
+def solve2(n):
+  pass
+
+#solve2(8)
