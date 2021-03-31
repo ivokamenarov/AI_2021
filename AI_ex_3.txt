@@ -1,0 +1,78 @@
+# Задача търсене на път в граф
+
+# Не информирано търсене чрез алгоритмите: breadth_first_graph_search, depth_first_graph_search
+# и двата алгоритъма изплзват обща схема(graph_search),
+
+class Graph:
+    def __init__(self, dict=None, directed=True):
+        pass
+
+    def make_undirected(self):
+        pass
+
+    def connect(self, A, B, distance=1):
+        pass
+
+    def connect1(self, A, B, distance):
+        pass
+
+    def get(self, a, b=None):
+        pass
+
+    def nodes(self):
+        pass
+
+
+def UndirectedGraph(dict=None):
+    return Graph(dict=dict, directed=False)
+
+bulgaria = UndirectedGraph( dict(
+    Ruse = dict(Silistra=119, Shumen=113, Veliko_Tarnovo=109, Pleven=148),
+    Shumen = dict(Varna=89, Veliko_Tarnovo=139),
+    Pleven = dict(Montana=105, Sofia=167, Veliko_Tarnovo=109),
+    Veliko_Tarnovo = dict(Sofia=222, Plovdiv=174, Stara_Zagora=104),
+    Sofia = dict(Montana=109, Plovdiv=147, Blagoevgrad=105),
+    Blagoevgrad = dict(Petrich=80),
+    Plovdiv = dict(Stara_Zagora=101, Smolyan=102),
+    Stara_Zagora = dict(Burgas=195),
+    Varna = dict(Burgas=117),
+    Montana = dict(Vidin=105)
+    ))
+
+infinity = 1.0e400
+
+class GraphProblem:
+    def __init__(self, initial, goal, graph):
+        pass
+
+    def successor(self, A):
+        pass
+
+    def goal_test(self, state):
+       pass
+
+    def path_cost(self, cost_so_far, A, action, B):
+        pass
+
+class Node:
+    def __init__(self, state, parent=None, action=None, path_cost=0):
+        pass
+
+    def __repr__(self):
+        return "<Node %s>" % (self.state,)
+
+    def path(self):
+        pass
+
+    def expand(self, problem):
+        pass
+
+
+def graph_search(problem, front):
+    pass
+
+def breadth_first_graph_search(problem):
+    pass
+
+def depth_first_graph_search(problem):
+    pass
