@@ -1,0 +1,33 @@
+locations = dict(
+    Ruse=(350, 557), Pleven=(325, 436), Veliko_Tarnovo=(304, 536),
+    Silistra=(406, 654), Shumen=(316, 652), Varna=(312, 749),
+    Montana=(324, 313), Vidin=(359, 252), Sofia=(241, 319),
+    Blagoevgrad=(200, 325), Petrich=(123, 312), Plovdiv=(208, 443),
+    Smolyan=(148, 442), Stara_Zagora=(222, 528), Burgas=(230, 727)
+)
+
+
+class MyPriorityQueue(queue.PriorityQueue):
+    def __init__(self):
+        queue.PriorityQueue.__init__(self)
+        self.counter = 0
+
+    def put(self, item, priority):
+        queue.PriorityQueue.put(self, (priority, self.counter, item))
+        self.counter += 1
+
+    def get(self, *args, **kwargs):
+        _, _, item = queue.PriorityQueue.get(self, *args, **kwargs)
+        return item
+
+def best_first_graph_search(problem, f):
+    pass
+
+def astar_search(problem, h=None):
+    pass
+
+
+from operator import attrgetter
+
+def hill_climbing(problem):
+    pass
