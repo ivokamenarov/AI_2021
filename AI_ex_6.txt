@@ -1,0 +1,96 @@
+def alphabeta_full_search(state, game):
+    player = game.to_move(state)
+
+    def max_value(state, alpha, beta):
+        pass
+
+    def min_value(state, alpha, beta):
+        pass
+
+    def better(state1, state2, f):
+        pass
+
+    # Body of alphabeta_search starts here:
+    fn = min_value if player==max else max_value
+    pass
+
+
+
+
+class StateBoard:
+    def __init__(self, to_move, utility, board, moves):
+        self.to_move = to_move
+        self.board = board
+        self.moves = moves
+        self.utility = utility
+    def __repr__(self):
+        return str(self.board)
+
+class TicTacToe(Game):
+    def __init__(self, h=3, v=3, k=3):
+        self.h = h
+        self.v = v
+        self.k = k
+        moves = [(x, y) for x in range(1, h+1)
+                 for y in range(1, v+1)]
+        self.initial = StateBoard(to_move=max, utility=0, board={}, moves=moves)
+
+    def legal_moves(self, state):
+        return state.moves
+
+    def make_move(self, move, state):
+        if move not in state.moves:
+            return state
+        board = state.board.copy()
+        board[move] = state.to_move
+        moves = list(state.moves)
+        moves.remove(move)
+        to_move = max if state.to_move==min else min
+        return StateBoard(to_move,
+                      self.compute_utility(board, move, state.to_move),
+                      board, moves)
+
+    def utility(self, state, player):
+        return state.utility
+
+    def terminal_test(self, state):
+        return state.utility != 0 or len(state.moves) == 0
+
+    def display(self, state):
+        board = state.board
+        for x in range(1, self.h+1):
+            for y in range(1, self.v+1):
+                b = board.get((x, y), '.')
+                b = "X" if b==max else "O" if b==min else '.'
+                print(b, end="")
+            print()
+
+    def compute_utility(self, board, move, player):
+        if (self.k_in_row(board, move, player, (0, 1)) or
+            self.k_in_row(board, move, player, (1, 0)) or
+            self.k_in_row(board, move, player, (1, -1)) or
+            self.k_in_row(board, move, player, (1, 1))):
+            return 1 if player == max else -1
+        else:
+            return 0
+
+    def k_in_row(self, board, move, player, delta):
+        delta_x, delta_y = delta
+        x, y = move
+        n = 0 
+        while board.get((x, y)) == player:
+            n += 1
+            x, y = x + delta_x, y + delta_y
+        x, y = move
+        while board.get((x, y)) == player:
+            n += 1
+            x, y = x - delta_x, y - delta_y
+        n -= 1
+        return n >= self.k
+
+class TicTacToeGame(TicTacToe):
+    def __init__(self, board):
+        TicTacToe.__init__(self)
+        self.initial.board = board
+        for x in board:
+            self.initial.moves.remove(x)
